@@ -1,0 +1,1 @@
+El Sistema de Carrito de Compras es una aplicación web diseñada para facilitar la experiencia de compra en línea para los usuarios. Permite a los clientes seleccionar productos de un catálogo en línea, agregarlos al carrito de compras y luego proceder al proceso de pago para completar la transacción.
