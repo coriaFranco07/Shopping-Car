@@ -1,0 +1,155 @@
+
+<%- include('partial/cabezera.ejs') %>  
+
+<div class="container mt-4 col-12 d-flex">
+
+  <div class="card border-secondary">
+
+      <div class="card-header bg-primary text-white text-center">Nuevo Usuario</div>
+          
+          <div class="card-body">
+              
+              <form action="/saveUser" method="POST">
+          
+
+                        <div class="row">
+
+                          <div class="col-md-6 mb-4">
+          
+                            <div class="form-outline form-white mb-4">
+                              <input type="text" name="user" id="user" class="form-control form-control-lg" />
+                              <label class="form-label" for="user">User</label>
+                              
+                          </div>
+          
+                          </div>
+
+                            <div class="col-md-6 mb-4">
+            
+                              <div class="form-outline form-white mb-4">
+                                <input type="text" name="name" id="name" class="form-control form-control-lg" />
+                                <label class="form-label" for="name">Full Name</label>
+
+                            </div>
+
+                          </div>
+
+                        </div>
+
+
+                        <div class="row">
+
+                          <div class="col-md-6 mb-4">
+          
+                            <div class="form-outline form-white mb-4">
+                              <input type="number" name="edad" id="edad" class="form-control form-control-lg" />
+                              <label class="form-label" for="edad">Year</label>
+                              
+                          </div>
+          
+                          </div>
+
+                            <div class="col-md-6 mb-4">
+            
+                              <div class="form-outline form-white mb-4">
+                                <input type="text" name="DNI" id="DNI" class="form-control form-control-lg" />
+                                <label class="form-label" for="DNI">DNI</label>
+                            </div>
+
+                          </div>
+
+                        </div>
+
+
+                        <div class="row">
+
+                          <div class="col-md-6 mb-4 d-flex align-items-center">
+          
+                            <div class="form-outline form-white mb-4">
+                              <input type="password" name="pass" id="pass" class="form-control form-control-lg" />
+                              <label class="form-label" for="pass">Password</label>
+                          </div>
+          
+                          </div>
+
+                          <div class="col-md-6 mb-4">
+          
+                            <h6 class="mb-2 pb-1">Sexo: </h6>
+          
+                            <div class="form-check form-check-inline">
+                              <input class="form-check-input" type="radio" name="masculino" id="masculino"
+                                value="option1" checked />
+                              <label class="form-check-label" for="masculino">Masculino</label>
+                            </div>
+          
+                            <div class="form-check form-check-inline">
+                              <input class="form-check-input" type="radio" name="femenino" id="femenino"
+                                value="option2" />
+                              <label class="form-check-label" for="femenino">Femenino</label>
+                            </div>
+          
+          
+                          </div>
+
+                        </div>
+          
+                        <div class="row">
+
+                          <div class="col-md-6 mb-4 pb-2">
+          
+                            <div class="form-outline">
+                              <input type="email" name="correo" id="correo" class="form-control form-control-lg" />
+                              <label class="form-label" for="correo">Email</label>
+                            </div>
+          
+                          </div>
+
+                          <div class="col-md-6 mb-4 pb-2">
+          
+                            <div class="form-outline">
+                              <input type="tel" name="telefono" id="telefono" class="form-control form-control-lg" />
+                              <label class="form-label" for="telefono">Phone Number</label>
+                            </div>
+          
+                          </div>
+
+                        </div>
+
+
+                        <div class="row">
+
+                          <div class="col-md-6 mb-4">
+            
+                            <div class="form-outline form-white mb-4">
+                              <input type="date" name="fecha_nacimiento" id="fecha_nacimiento" class="form-control form-control-lg" />
+                              <label class="form-label" for="fecha_nacimiento">Birth Date</label>
+                            
+                              
+                          </div>
+          
+                          </div>
+
+                            <div class="col-md-6 mb-4">
+            
+                              <div class="mt-4 pt-2">
+                                <button type="submit" class="btn btn-primary" tabindex="5">Guardar</button>
+                                <a href="usuario" class="btn btn-outline-light btn-lg px-5" style="background-color: #1f2735;">Cancel</a>
+                              </div>
+
+
+
+                            </div>
+
+                          </div>
+
+                    </form>
+
+                  </div>
+
+          </div>
+      
+      </div>
+            
+    </body>
+
+</html>

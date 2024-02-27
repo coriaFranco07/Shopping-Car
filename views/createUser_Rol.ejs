@@ -1,0 +1,53 @@
+<%- include('partialCarrito/cabezeraCarrito.ejs') %> 
+
+<br>
+
+        <h3 style="text-align: center;">AGREGAR ROL</h3>
+        
+        <div class="container mt-4 col-12 d-flex">
+
+            <div class="card border-secondary" style="place-items: center; display: grid; margin: auto">
+
+                
+                    
+                <div class="card-body">
+                        
+                    <form action="/saveUser_rol" method="POST">
+
+
+                        <div class="mb-3">
+                                
+                                
+                            <select  id="name_rol" name="name_rol"  tabindex="3" style="place-items: center; display: grid; margin: auto">
+                                    
+                                <% rol.forEach((r) => { %>
+    
+    
+                                <option   class="text-sm-center" <%= r.id_rol=='basico' ? 'selected' : '' %> value="<%=r.id_rol %>"><%=r.nombre_rol %></option>
+                                       
+                                      
+                                <% }) %>
+
+                            </select>
+                                  
+                              
+                        </div>
+
+                        <div class="mb-3">
+                            <button type="submit" class="btn btn-primary" tabindex="5">Guardar</button>
+                            <a href="/usuario" class="btn btn-secondary">Cancelar</a>
+                        </div>
+
+                            
+                    </form>
+
+                </div>
+
+            </div>
+        
+        </div>
+        
+        <%- include('partialCarrito/scriptCarrito.ejs')%> 
+   </body>
+
+</html>

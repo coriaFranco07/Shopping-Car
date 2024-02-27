@@ -1,0 +1,64 @@
+/* body{
+    background-color: aliceblue;
+    font-family: roboto;
+    margin: auto;
+    text-align: center;
+}
+
+.login-form, .contenedor{
+    width: 300px;
+    margin: 0 auto;
+}
+
+.login-form h2{
+    text-align: center;
+    color: midnightblue;
+    font-size: 28px;
+    padding: 70px 0 10px 0;
+}
+
+.login-form input[types="password"]{
+    width: 100px;
+    padding: 15px;
+    border: 1px solid #ced4da;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+}
+
+.login-form input[types="text"]{
+    width: 100px;
+    padding: 15px;
+    border: 1px solid #ced4da;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+}
+
+/*estilos de boton login*/
+/* .btn-login{
+    width: 100px;
+    padding: 15px;
+    background-color: #6f42c1;
+    border: 0;
+    box-sizing: border-box;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: large;
+    color: #ffffff;
+}  */
+
+.gradient-custom {
+    /* fallback for old browsers */
+    background: #6a11cb;
+    
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: -webkit-linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1));
+    
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1))
+}
+
+.gradient-custom h2{
+
+    color: orangered;
+
+}

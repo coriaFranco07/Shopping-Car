@@ -1,0 +1,37 @@
+<%- include('partial/cabezera.ejs') %>  
+
+        
+        <div class="container mt-4 col-12 d-flex">
+
+            <div class="card border-secondary">
+
+                <div class="card-header bg-primary text-white text-center">Nuevo Rol</div>
+                    
+                    <div class="card-body">
+                        
+                        <form action="/saveRol" method="POST">
+
+                            <div class="mb-3">
+                                <label for="nombre_rol" class="form-label">Tipo Rol</label>
+                                <input type="text" class="form-control" id="nombre_rol" name="nombre_rol" tabindex="1" placeholder="Escribe rol...">
+                            </div>
+
+
+                            <div class="mb-3">
+                                <button type="submit" class="btn btn-primary" tabindex="5">Guardar</button>
+                                <a href="/roles" class="btn btn-secondary">Cancelar</a>
+                            </div>
+                            
+                            
+                        </form>
+
+                    </div>
+
+            </div>
+        
+        </div>
+        
+        <%- include('partial/scrip.ejs')%> 
+   </body>
+
+</html>

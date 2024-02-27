@@ -1,0 +1,64 @@
+<%-include ('partial/cabezera')%>
+
+
+        <% if(user) { %>
+        
+        <div class="container mt-4">
+
+            <div class="card border-secondary">
+
+                <div class="card-header" style="font-weight: 700;" >Editar Producto</div>
+                <div class="card-body">
+
+                    
+                   <form action="/update" method="POST" id="formu">
+                        
+                        <input id="id_producto" name="id_producto" value=" <%= user.id_producto %>" hidden>
+
+                        <div class="mb-3">
+                            <label for="tipoProducto" class="form-label">Tipo Producto</label>
+                            <input type="text" id="form-control" id="tipoProducto" name="tipoProducto" value=" <%= user.tipoProducto %> " tabindex="1">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="nombre" class="form-label">Nombre</label>
+                            <input type="text" id="form-control" id="nombre" name="nombre" value=" <%= user.nombre %> " tabindex="1">
+                        </div>
+
+                         <div class="mb-3">
+                            <label for="codigo" class="form-label">Codigo</label>
+                            <input type="number" id="form-control" id="codigo" name="codigo" value=" <%= user.codigo %> " tabindex="1">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="stock" class="form-label">Stock</label>
+                            <input type="number" id="form-control" id="stock" name="stock" value=" <%= user.stock %> " tabindex="1">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="precioVenta" class="form-label">Precio</label>
+                            <input type="number" id="form-control" id="precioVenta" name="precioVenta" value=" <%= user.precioVenta %> " tabindex="1" prefix="$">
+                        </div>
+
+
+                        <button type="submit" class="btn btn-primary" tabindex="5">Guardar</button>
+                        <a href="/admin" class="btn btn-secondary">Cancelar</a>
+                        
+                        
+                    </form> 
+
+                    
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <% } %>
+        
+        <%- include('partial/scrip.ejs')%> 
+        
+   </body>
+
+</html>

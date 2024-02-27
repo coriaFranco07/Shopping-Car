@@ -1,0 +1,131 @@
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+
+<%- include('partialCarrito/cabezeraCarrito.ejs') %>  
+
+<br>
+  
+    <div class="container" tyle="background-color: aliceblue;
+    font-family: roboto;
+    margin: auto; border-radius: 15px 10px 15px 10px;">
+
+            <a href="/inicio" class="btn btn-outline-light btn-lg px-5" style="background-color: #1f2735; right: 140px; width: 150px; position: fixed; background-color: #1f2735;">Cancel</a>
+
+            <h1 style="background-color: aliceblue;
+            font-family: roboto;
+            margin: auto;
+            text-align: center; border-radius: 15px 10px 15px 10px;">USUARIO</h1>
+
+            <a href="/createUser" class="btn btn-outline-info"><i class="fa-solid fa-square-plus"></i></a>
+
+
+            <table id="usuarios" class="table table-bordered table-striped text-center nt-4">
+
+                <thead>
+
+                    <tr class="bg-primary text-white">
+
+
+                        <th scope="col">ID</th>
+                        <th scope="col">USUARIO</th>
+                        <th scope="col">NOMBRE</th>
+                        <th scope="col">EDAD</th>
+                        <th scope="col">CORREO</th>
+                        <th scope="col">DNI</th>
+                        <th scope="col">SEXO</th>
+                        <th scope="col">TELEFONO</th>
+                        <th scope="col">FECH-NACIMENTO</th>
+                        <th scope="col">ACCIONES</th>
+                    
+    
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    <% results.forEach((user)=> { %>
+
+                        <tr>
+
+                            <td><%= user.id %></td> 
+                            <td><%= user.user %></td> 
+                            <td><%= user.name %></td>  
+                            <td><%= user.edad %></td> 
+                            <td><%= user.correo %></td> 
+                            <td><%= user.DNI %></td> 
+                            <td><%= user.sexo %></td> 
+                            <td><%= user.telefono %></td> 
+                            <td><%= user.fecha_nacimiento %></td> 
+                           
+                           
+                            
+
+                            <td>
+
+                                <a href="/editUser/<%= user.id %>" class="btn btn-outline-info"><i class="fa-solid fa-pen-to-square"></i></a>
+                                <a onclick="confirmar(<%= user.id %>)" class="btn btn-outline-danger"><i class="fa-solid fa-trash"></i></a>
+                                <a href="/usuario_rol/<%= user.id %>" class="btn btn-outline-danger"><i class='bx bxs-purchase-tag-alt'></i></a>
+
+                            </td> 
+
+                            
+                            
+                        </tr>
+
+                    <% }) %>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+        <br>
+
+
+        <%- include('partialCarrito/scriptCarrito.ejs')%> 
+
+        
+
+        <!-- Script para Eliminar Rol -->
+        <script>
+
+            /* $(document).ready(function () {
+                $('#carrito').DataTable();
+            }); */
+
+            // Eliminando registro usando sweetAlert
+
+            function confirmar(id){
+
+                Swal.fire({
+                    
+                    title: '¿Confirma eliminar el usuario?',
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Confirmar'
+                    
+                    }).then((result) => {
+
+                    if (result.isConfirmed) {
+                        window.location= '/deleteUser/'+id;
+                    } 
+                });
+            }
+
+
+            
+
+           
+
+        </script>
+
+        
+
+    </body>
+
+</html> 

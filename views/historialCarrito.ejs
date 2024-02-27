@@ -1,0 +1,76 @@
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+<%- include('partialCarrito/cabezeraCarrito.ejs') %>  
+
+<br>
+
+<div class="container" tyle="background-color: aliceblue;
+font-family: roboto;
+margin: auto; border-radius: 15px 10px 15px 10px;">
+
+        <a href="/admin" class="btn btn-outline-light btn-lg px-5" style="background-color: #1f2735; right: 140px; width: 150px; position: fixed; background-color: #1f2735;">Cancel</a>
+
+        <h1 style="background-color: aliceblue;
+        font-family: roboto;
+        margin: auto;
+        text-align: center; border-radius: 15px 10px 15px 10px;">MI CARRITO</h1>
+
+
+        <table id="usuarios" class="table table-bordered table-striped text-center nt-4">
+
+            <thead>
+
+                <tr class="bg-primary text-white">
+
+
+                    
+                    <th scope="col">USUARIO</th>
+                    <th scope="col">TIPO PRODUCTO</th>
+                    <th scope="col">NOMBRE</th>
+                    <th scope="col">PRECIO</th>
+                    <th scope="col">CANTIDAD</th>
+                    <th scope="col">SUBTOTAL</th>
+                   
+                
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                <% carrito.forEach((c)=> { %>
+
+                    <tr>
+
+                        
+                        <td><%= c.user %></td> 
+                        <td><%= c.tipoProducto %></td> 
+                        <td><%= c.nombre %></td>  
+                        <td><%= c.precioVenta %></td> 
+                        <td><%= c.cantidad %></td> 
+                        <td><%= c.subtotal %></td> 
+                  
+                        
+                    </tr>
+
+                <% }) %>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+    <br>
+
+
+<%- include('partialCarrito/scriptCarrito.ejs')%> 
+
+   
+
+    
+  </body>
+
+</html>

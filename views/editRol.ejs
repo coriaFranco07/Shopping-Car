@@ -1,0 +1,44 @@
+<%-include ('partial/cabezera')%>
+
+
+        <% if(rol) { %>
+        
+        <div class="container mt-4">
+
+            <div class="card border-secondary">
+
+                <div class="card-header" style="font-weight: 700;" >Editar Rol</div>
+                <div class="card-body">
+
+                    
+                   <form action="/updateRol" method="POST" id="formu">
+                        
+                        <input id="id_rol" name="id_rol" value=" <%= rol.id_rol %>" hidden>
+
+                        <div class="mb-3">
+                            <label for="nombre_rol" class="form-label">Tipo Rol</label>
+                            <input type="text"  id="nombre_rol" name="nombre_rol" value=" <%= rol.nombre_rol %> " tabindex="1">
+                        </div>
+
+                        
+                        <button type="submit" class="btn btn-primary" tabindex="5">Guardar</button>
+                        <a href="/roles" class="btn btn-secondary">Cancelar</a>
+                        
+                        
+                    </form> 
+
+                    
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <% } %>
+        
+        <%- include('partial/scrip.ejs')%> 
+        
+   </body>
+
+</html>

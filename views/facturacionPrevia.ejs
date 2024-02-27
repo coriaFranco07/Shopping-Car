@@ -1,0 +1,120 @@
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+<%- include('partialCarrito/cabezeraCarrito.ejs') %>  
+
+<br>
+
+<div class="container" tyle="background-color: aliceblue;
+font-family: roboto;
+margin: auto; border-radius: 15px 10px 15px 10px;">
+
+        <button id="printButton" class="btn btn-outline-info" style="background-color: #0f2549;  width: 150px; position: fixed; background-color: #0f2549;"><i class='bx bxs-printer'></i></button>
+
+
+        <a href="/forma_pago" class="btn btn-outline-light btn-lg px-5" style="background-color: #1f2735; right: 140px; width: 150px; position: fixed; background-color: #1f2735;">Cancel</a>
+
+        <br>
+
+        <h1 style="background-color: aliceblue;
+        font-family: roboto;
+        margin: auto;
+        text-align: center; border-radius: 15px 10px 15px 10px;">FACTURACION</h1>
+
+
+        <table id="facturacionPrevia" class="table table-bordered table-striped text-center nt-4">
+
+            <thead>
+
+                <tr class="bg-primary text-white">
+ 
+                    <th scope="col">USUARIO</th>
+                    <th scope="col">PRODUCTO</th>
+                    <th scope="col">NOMBRE</th>
+                    <th scope="col">PRECIO</th>
+                    <th scope="col">CANTIDAD</th>
+                    <th scope="col">SUBTOTAL</th>
+                    <th scope="col">TIPO PAGO</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                <% facturacion.forEach((c)=> { %>
+
+                    <tr>
+
+                        
+                        <td><%= c.name %></td> 
+                        <td><%= c.tipoProducto %></td> 
+                        <td><%= c.nombre %></td>  
+                        <td><%= c.precioVenta %></td> 
+                        <td><%= c.cantidad %></td> 
+                        <td><%= c.subtotal %></td> 
+                        <td style="font-weight: bold;"><%= nombre_formaPago %></td>
+                        
+                        
+                    </tr>
+
+                    
+
+                <% }) %> 
+
+                
+                    
+                <tr>
+                    
+                    <th scope="col">TOTAL</th>
+                    <td colspan="6"></td>
+                    <td id="total"></td>
+                    <td></td>
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+    <br>
+
+
+<%- include('partialCarrito/scriptCarrito.ejs')%> 
+
+    
+    <!-- Sacar el total de todos los productos -->
+    <script>
+        // Obtiene todas las filas de la tabla, excepto la última (que contiene el total)
+        const rows = document.querySelectorAll('#facturacionPrevia tbody tr:not(:last-child)');
+    
+        // Inicializa el total en cero
+        let total = 0;
+    
+        // Recorre todas las filas y suma los subtotales
+        rows.forEach(row => {
+        // Obtiene el valor del subtotal en la columna correspondiente
+        const subtotal = parseFloat(row.cells[5].textContent);
+        // Suma el subtotal al total
+        total += subtotal;
+        });
+    
+        // Muestra el total en la última fila de la tabla
+        const totalCell = document.querySelector('#total');
+        totalCell.textContent = total.toFixed(2); // Ajusta el total a dos decimales
+    </script>
+
+    <script>
+        
+        document.getElementById("printButton").addEventListener("click", function() {
+        window.print();
+        });
+
+    </script>
+
+   
+
+  </body>
+
+</html>

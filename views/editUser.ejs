@@ -1,0 +1,106 @@
+<%-include ('partial/cabezera')%>
+
+
+        <% if(user) { %>
+        
+        <div class="container mt-4">
+
+            <div class="card border-secondary">
+
+                <div class="card-header" style="font-weight: 700;" >Editar Rol</div>
+                <div class="card-body">
+
+                    
+                   <form action="/updateUser" method="POST" id="formu">
+                        
+                        <input id="id" name="id" value=" <%= user.id %>" hidden>
+
+                        <div class="mb-3">
+                            <label for="user" class="form-label">USUARIO</label>
+                            <input type="text"  id="user" name="user" value=" <%= user.user %> " tabindex="1">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="name" class="form-label">NOMBRE</label>
+                            <input type="text"  id="name" name="name" value=" <%= user.name %> " tabindex="1">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="pass" class="form-label">CONTRASEÑA</label>
+                            <input type="text"  id="pass" name="pass" value=" <%= user.pass %> " tabindex="1">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="edad" class="form-label">EDAD</label>
+                            <input type="number"  id="edad" name="edad" value=" <%= user.edad %> " tabindex="1">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="correo" class="form-label">CORREO</label>
+                            <input type="email"  id="correo" name="correo" value=" <%= user.correo %> " tabindex="1">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="DNI" class="form-label">DNI</label>
+                            <input type="text"  id="DNI" name="DNI" value=" <%= user.DNI %> " tabindex="1">
+                        </div>
+
+                        <!-- <div class="mb-3">
+                            <label for="sexo" class="form-label">SEXO</label>
+                            <input type="text"  id="sexo" name="sexo" value=" <%= user.sexo %> " tabindex="1">
+                        </div> -->
+
+
+
+                        <div class="mb-3">
+          
+                            <h6 class="mb-2 pb-1">SEXO: </h6>
+          
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="masculino" id="masculino"
+                                  value="option1" checked />
+                                <label class="form-check-label" for="masculino">Masculino</label>
+                              </div>
+            
+                              <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="femenino" id="femenino"
+                                  value="option2" />
+                                <label class="form-check-label" for="femenino">Femenino</label>
+                              </div>
+          
+          
+                        </div>
+
+
+                        <div class="mb-3">
+                            <label for="telefono" class="form-label">TELEFONO</label>
+                            <input type="number"  id="telefono" name="telefono" value=" <%= user.telefono %> " tabindex="1">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="fecha_nacimiento" class="form-label">FECH_NACIMIENTO</label>
+                            <input type="date"  id="fecha_nacimiento" name="fecha_nacimiento" value=" <%= user.fecha_nacimiento %> " tabindex="1">
+                        </div>
+
+                        
+                        <button type="submit" class="btn btn-primary" tabindex="5">Guardar</button>
+                        <a href="/usuario" class="btn btn-secondary">Cancelar</a>
+                        
+                        
+                    </form> 
+
+                    
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <% } %>
+        
+        <%- include('partial/scrip.ejs')%> 
+        
+   </body>
+
+</html>

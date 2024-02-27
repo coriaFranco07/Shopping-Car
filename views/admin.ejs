@@ -1,0 +1,245 @@
+
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+
+<%- include('partial/cabezera.ejs') %>  
+
+  
+    <div class="container" tyle="background-color: aliceblue;
+    font-family: roboto;
+    margin: auto; border-radius: 15px 10px 15px 10px;">
+
+            <h1 style="background-color: aliceblue;
+            font-family: roboto;
+            margin: auto;
+            text-align: center; border-radius: 15px 10px 15px 10px;">BIENVENIDO AL CARRITO</h1>
+
+
+            <a href="/create" class="btn btn-outline-primary mt-4"><i class="fa-solid fa-square-plus"></i></a>
+
+            <a href="/inicio" class="btn btn-outline-light btn-lg px-5" style="background-color: #1f2735; right: 140px; width: 150px; position: fixed; background-color: #1f2735;">Cancel</a>
+
+            <table id="producto" class="table table-bordered table-striped text-center nt-4">
+
+                <thead>
+
+                    <tr class="bg-primary text-white">
+
+
+                        <th scope="col">ID</th>
+                        <th scope="col">TIPO</th>
+                        <th scope="col">NOMBRE</th>
+                        <th scope="col">CODIGO</th>
+                        <th scope="col">STOCK</th>
+                        <th scope="col">PRECIO</th>
+                        <th scope="col">COMPRA</th>
+                        <th scope="col">ACCIONES</th>
+                        
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    <% results.forEach((user)=> { %>
+
+                        <tr>
+
+                            <td><%= user.id_producto %></td> 
+                            <td><%= user.tipoProducto %></td> 
+                            <td><%= user.nombre %></td> 
+                            <td><%= user.codigo %></td>
+                            <td><%= user.stock %></td>
+                            <td><%= user.precioVenta %></td>
+                            <td><input type="number" min="1" max="<%= user.stock %>" value="0" name="cant" id="cant"></td>
+                            
+
+                            <td>
+
+                                <a href="/edit/<%= user.id_producto %>" class="btn btn-outline-info"><i class="fa-solid fa-pen-to-square"></i></a>
+                                <a onclick="confirmar(<%= user.id_producto %>)" class="btn btn-outline-danger"><i class="fa-solid fa-trash"></i></a>
+                                
+                                <button id="marcador" class="btn btn-outline-info"><i class='bx bx-cart-add'></i></button>
+
+                            </td> 
+
+                            
+                            
+                        </tr>
+
+                    <% }) %>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+        <br>
+
+        
+       
+
+        <% if(alert){ %>
+
+            <script>
+                Swal.fire({
+                    title: 'No autorizado',
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Confirmar' 
+                });
+            </script>
+
+        <% } %>
+
+
+        <%- include('partial/scrip.ejs')%> 
+
+        <!-- Script para para darle la funcion al boton de agregar al carrito -->
+        <script>
+
+            $(document).ready(function () {
+
+                var table=$('#producto').DataTable();
+
+                $('#producto tbody').on('click', '#marcador', function(e){
+                    const data = table.row($(this).parents('tr')).data();
+                    //var cant = data[6]
+
+                    const id_producto= data[0];
+                    const tipo= data[1];
+                    const nombre= data[2];
+                    const precio= data[5];
+                    const cant = $(this).closest('tr').find('#cant').val();
+
+                   
+
+                    
+                    //var cant = dataEdit.row(this).data()[0]
+                    
+                    sumarCarrito(id_producto, tipo, nombre, precio, cant); 
+                })
+            });
+
+        </script>
+
+
+        <!-- Script para agregar al carrito -->
+        <script>
+
+            
+
+            function sumarCarrito(id_producto, tipo, nombre, precio, cant){
+
+                const cantidad = parseInt(cant);
+                const subtotal= (precio * cant);
+                
+
+            
+                if(cantidad){
+
+                    //alert(`${id_producto} - ${tipo} - ${nombre} - ${precio} - ${cant} `);
+
+                    Swal.fire({
+                    
+                        title: '¿Confirma agregar el producto?',
+                        icon: "success",
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: 'Confirmar'
+                        
+                        }).then((result) => {
+
+                        if (result.isConfirmed) {
+
+                            const Toast = Swal.mixin({
+                            toast: true,
+                            position: 'top-end',
+                            showConfirmButton: false,
+                            timer: 3000,
+                            timerProgressBar: true,
+                            didOpen: (toast) => {
+                                toast.addEventListener('mouseenter', Swal.stopTimer)
+                                toast.addEventListener('mouseleave', Swal.resumeTimer)
+                            }
+                            })
+
+                            Toast.fire({
+                            icon: 'success',
+                            title: 'Producto Agregado!!!'
+                            })
+
+                            window.location= '/agregarCarritoPrevio/' + id_producto +  '/' + precio + '/' + cant;
+                        } 
+
+                    });
+
+                    
+
+                }
+ 
+                 
+            }
+
+            
+    
+            //const carrito= document.getElementById('carrito').insertRow(1);
+                
+            
+
+            //BUSCAR COMO HACER TABLA TEMPORAL (id_user, id_producto, cant_prod, fecha).
+            
+
+            
+        </script>
+
+
+       
+
+        <!-- Script para Eliminar Producto -->
+        <script>
+
+            /* $(document).ready(function () {
+                $('#carrito').DataTable();
+            }); */
+
+            // Eliminando registro usando sweetAlert
+
+            function confirmar(id_producto){
+
+                Swal.fire({
+                    
+                    title: '¿Confirma eliminar el registro?',
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Confirmar'
+                    
+                    }).then((result) => {
+
+                    if (result.isConfirmed) {
+                        window.location= '/delete/'+id_producto;
+                    } 
+                });
+            }
+
+
+            
+
+           
+
+        </script>
+
+    </body>
+
+</html> 
+
+
+
